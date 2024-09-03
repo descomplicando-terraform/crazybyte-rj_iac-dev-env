@@ -1,6 +1,6 @@
 #
-name: ${{ github.actor }} Iniciou a Verificação de segurança com TFSEC
-
+name: Verificação de segurança com TFSEC
+run-name: ${{ github.actor }} Iniciou a Verificação de segurança com TFSEC
 on:
   push:
     branches: [ "main" ]

@@ -1,0 +1,31 @@
+name: Validacap do codigo terraform
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Configura o terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: Initicializacao
+      run: terraform init
+
+    - name: Formatacao
+      run: terraform fmt
+
+    - name: Validacao
+      run: terraform validate
+
+    - name: Teste
+      run: terraform test

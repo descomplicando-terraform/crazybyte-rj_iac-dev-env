@@ -22,3 +22,8 @@ jobs:
       # You may pin to the exact commit or the version.
       # uses: terraform-docs/gh-actions@e47bfa196e79fa50987ef391be236d9d97b0c786
         uses: terraform-docs/gh-actions@v1.2.0
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "true"

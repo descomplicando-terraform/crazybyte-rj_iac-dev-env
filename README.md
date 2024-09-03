@@ -47,5 +47,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_ip"></a> [ip](#output\_ip) | n/a |
+| <a name="output_ip"></a> [ip](#output\_ip) | Exibe o(s) endereço(s) IP(s) atribuído(s) à(s) instância(s) |
 <!-- END_TF_DOCS -->

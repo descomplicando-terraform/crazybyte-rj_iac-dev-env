@@ -20,8 +20,7 @@ jobs:
         with:
           ref: main
           #token: ${{ secrets.WORKFLOW_TOKEN }}
-          # novo comentario
-          token: ${{ github.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: terraform-docs-gh-actions
       # You may pin to the exact commit or the version.

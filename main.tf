@@ -5,15 +5,21 @@ resource "libvirt_cloudinit_disk" "commoninit" {
   name  = "${var.server_hostname[count.index]}-commoninit.iso"
   # usa um template como modelo para a configuração base do cloud_init
   user_data = templatefile("${path.module}/cloud_init.cfg", {
-    hostname = var.server_hostname[count.index]
-    fqdn     = "${var.server_hostname[count.index]}.${var.domain}"
+    hostname      = var.server_hostname[count.index]
+    fqdn          = "${var.server_hostname[count.index]}.${var.domain}"
+    ssh_key       = var.ssh_pub_key
+    user_name     = var.user_name
+    user_password = var.user_password
   })
+
   # usa um template como modelo para a configuração de rede da(s) máquina(s)
   network_config = templatefile("${path.module}/network_config.cfg", {
     interface = var.interface
     ip_addr   = var.server_ips[count.index]
+    gtw_addr  = var.virt_gtw_addr
+    ip_dns1   = var.virt_dns_01
   })
-  pool = libvirt_pool.ubuntu_pool.name
+  pool = libvirt_pool.ubuntu_pool[0].name
   # garante que só vai executar após ser criado o pool de imagens
   depends_on = [
     libvirt_pool.ubuntu_pool
@@ -37,7 +43,7 @@ resource "libvirt_domain" "servidores" {
 
 
   network_interface {
-    network_name = libvirt_network.dev_network.name
+    network_name = libvirt_network.dev_network[0].name
     addresses    = [var.server_ips[count.index]]
   }
 
@@ -67,16 +73,17 @@ resource "libvirt_domain" "servidores" {
 }
 
 resource "libvirt_pool" "ubuntu_pool" {
-  name = "vm-pool"
-  type = "dir"
-  path = "/home/fabio/libvirt_images/ubuntu-pool/"
+  count = var.criar_infra ? 1 : 0
+  name  = var.virt_pool_name
+  type  = "dir"
+  path  = var.virt_pool_path
 }
 
 resource "libvirt_volume" "os_image" {
   # Verifica se é para criar a infra ou não
   count  = var.criar_infra ? length(var.server_hostname) : 0
   name   = "ubuntu_24-04_os_image.${var.server_hostname[count.index]}"
-  pool   = libvirt_pool.ubuntu_pool.name
+  pool   = libvirt_pool.ubuntu_pool[0].name
   source = "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-amd64.img"
   format = "qcow2"
   # garante que só vai executar após ser criado o pool de imagens

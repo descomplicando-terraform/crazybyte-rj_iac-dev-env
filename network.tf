@@ -1,7 +1,8 @@
 resource "libvirt_network" "dev_network" {
-  name = "devnet"
-  mode = "bridge"
+  count = var.criar_infra ? 1 : 0
+  name  = var.virt_net_name
+  mode  = "bridge"
 
-  addresses = ["192.168.0.0/24"]
-  bridge    = "br0"
+  addresses = var.virt_net_cidr
+  bridge    = var.bridge_name
 }

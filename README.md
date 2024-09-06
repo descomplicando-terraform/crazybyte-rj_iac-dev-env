@@ -3,6 +3,9 @@
 Repositório para código IaC projeto final do curso Descomplicando Terraforma - Linuxtips.
 
 Provisionar um ambiente simples para auxiliar no provisionamento de máquinas virtuais para uso local por desenvolvedores.
+
+Para detalhes de como utilizar, veja o arquivo [USAGE.md](https://github.com/descomplicando-terraform/crazybyte-rj_iac-dev-env/blob/main/USAGE.md) e também exemplos de utilização na pasta [examples](https://).
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

@@ -56,4 +56,6 @@ https://www.tecmint.com/create-network-bridge-in-ubuntu/
 
 https://linuxhint.com/install-kvm-ubuntu-22-04/
 
-## 
+## Usando o módulo
+
+Na pasta examples estão alguns exemplos simples mostrando algumas formas de utilização deste módulo.

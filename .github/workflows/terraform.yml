@@ -1,5 +1,5 @@
 name: Validacao do codigo terraform
-run-name: ${{ github.actor }} iniciou a validação do código terraforma
+run-name: ${{ github.actor }} iniciou a validação do código terraform
 on:
   push:
     branches:

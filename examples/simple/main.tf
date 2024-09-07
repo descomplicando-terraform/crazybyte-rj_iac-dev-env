@@ -1,7 +1,5 @@
-
 /*
-    Cria a infra usando os valores padrão do módulo e uma chave pública de SSH a partir do arquivo
-    Este exemplo usa o modo padrão do módulo para criar uma infra para testes.
+    Cria uma máquina com os dados básicos e os demais valores como padrão do módulo
     Neste modo, são usados os seguintes valores padrão:
 
     # dominio usado no hostname das máquinas
@@ -34,29 +32,11 @@
     # nome da bridge pré-configurada que será usada pelo libvirt
     bridge_name => br0
 
-    # define os IPs para as máquinas a serem criadas
-    server_ips => ["192.168.0.180","192.168.0.190"]
-
-    # define a memória padrão para as máquinas
-    # atualmente é um valor padrão para todas as máquinas
-    server_memory => 1024
-
-    # define a quantidade de vcpus de cada instância
-    # atualmente é um valor padrão para todas as máquinas
-    server_vcpu => 1
-
-    # define os hostnames de cada instância
-    server_hostname => ["srv01","srv02"]
-
     # define o nome do usuário padrão das instâncias
     user_name => "devuser"
 
     # define a senha do usuário padrão
     user_password => "devuser"
-
-
-    network - 192.168.0.0/24
-    servidores - srv01 (192.168.0.180), srv02 (192.168.0.190)
 
 */
 
@@ -83,4 +63,13 @@ module "ambiente_01" {
 
   # dado obrigatório para permitir o acesso ssh nas máquinas
   ssh_pub_key = data.local_file.pubkey.content
+
+  # define os dados da instância a ser criada
+  instances = [
+    {
+      instance_name   = "web01"
+      instance_ip     = "192.168.0.180"
+      instance_memory = 1024
+      instance_vcpu   = 1
+  }]
 }

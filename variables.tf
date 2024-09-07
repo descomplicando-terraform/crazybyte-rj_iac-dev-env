@@ -62,10 +62,10 @@ variable "server_ips" {
   type        = list(any)
   description = "Define a lista de IPs de cada máquina sendo criada."
   default     = ["192.168.0.180", "192.168.0.190"]
-  validation {
+  /*   validation {
     condition     = length(var.server_ips) == length(var.server_hostname)
     error_message = "A quantidade de endereços IP deve ser igual a quantidade de hostnames"
-  }
+  } */
 }
 
 variable "server_memory" {

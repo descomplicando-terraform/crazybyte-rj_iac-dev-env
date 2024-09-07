@@ -62,6 +62,10 @@ variable "server_ips" {
   type        = list(any)
   description = "Define a lista de IPs de cada máquina sendo criada."
   default     = ["192.168.0.180", "192.168.0.190"]
+  validation {
+    condition     = length(var.server_ips) == length(var.server_hostname)
+    error_message = "A quantidade de endereços IP deve ser igual a quantidade de hostnames"
+  }
 }
 
 variable "server_memory" {
@@ -80,6 +84,10 @@ variable "server_hostname" {
   type        = list(string)
   description = "Define a lista de Nomes de cada instância a ser criada."
   default     = ["srv01", "srv02"]
+  validation {
+    condition     = length(var.server_hostname) == length(var.server_ips)
+    error_message = "A quantidade de hosts deve ser igual a quantidade de endereços IP"
+  }
 }
 
 variable "ssh_pub_key" {

@@ -20,8 +20,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-          #token: ${{ secrets.WORKFLOW_TOKEN }}
-          token: ${{ github.token }}
+          token: ${{ secrets.WORKFLOW_TOKEN }}
+          #token: ${{ github.token }}
 
       - name: terraform-docs-gh-actions
       # You may pin to the exact commit or the version.

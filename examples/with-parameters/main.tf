@@ -1,6 +1,6 @@
 
 /*
-    Cria a infra usando os valores padrão do módulo e uma chave pública de SSH a partir do arquivo
+    Cria a infra usando os valores especificados e uma chave pública de SSH a partir do arquivo
     Este exemplo usa o modo padrão do módulo para criar uma infra para testes.
     Neste modo, são usados os seguintes valores padrão:
 
@@ -76,11 +76,26 @@ data "local_file" "pubkey" {
   filename = "${path.module}/simple.pub"
 }
 
-module "ambiente_01" {
+module "web-dev-env" {
   source = "github.com/descomplicando-terraform/crazybyte-rj_iac-dev-env"
   # definido como true para poder criar a infra
   criar_infra = true
 
   # dado obrigatório para permitir o acesso ssh nas máquinas
   ssh_pub_key = data.local_file.pubkey.content
+
+  virt_net_name  = "web-net-net"
+  virt_pool_name = "webpool"
+  # o usuário que executará o código terraform precisa ter permissão para criar a pasta
+  virt_pool_path  = "/srv"
+  virt_gtw_addr   = "10.0.3.254"
+  virt_net_cidr   = "10.0.0.0/22"
+  virt_dns_01     = "10.0.0.2"
+  server_hostname = ["web01", "web02", "lb01"]
+  server_ips      = ["10.0.2.1", "10.0.2.2", "10.0.2.0"]
+  server_vcpu     = 2
+  server_memory   = 2048
+  user_name       = "webuser"
+  user_password   = "$3c4etW38"
+
 }

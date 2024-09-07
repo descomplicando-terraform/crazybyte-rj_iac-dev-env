@@ -34,7 +34,7 @@ module "web-dev-env" {
   # o usuário que executará o código terraform precisa ter permissão para criar a pasta
   virt_pool_path = "/srv"
   virt_gtw_addr  = "10.0.3.254"
-  virt_net_cidr  = "10.0.0.0/22"
+  virt_net_cidr  = ["10.0.0.0/22"]
   virt_dns_01    = "10.0.0.2"
   user_name      = "webuser"
   user_password  = "$3c4etW38"

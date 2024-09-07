@@ -41,11 +41,8 @@ No modules.
 | <a name="input_bridge_name"></a> [bridge\_name](#input\_bridge\_name) | Define o nome da bridge a ser usada (deve existir na máquina host) | `string` | `"br0"` | no |
 | <a name="input_criar_infra"></a> [criar\_infra](#input\_criar\_infra) | Define se irá criar as máquinas ou não | `bool` | `false` | no |
 | <a name="input_domain"></a> [domain](#input\_domain) | Define o domínio das máquinas sendo criadas | `string` | `"dev.local"` | no |
+| <a name="input_instances"></a> [instances](#input\_instances) | Mapa de instancias | <pre>list(object({<br>    instance_name   = string<br>    instance_ip     = string<br>    instance_memory = number<br>    instance_vcpu   = number<br>    })<br>  )</pre> | `[]` | no |
 | <a name="input_interface"></a> [interface](#input\_interface) | Define o nome do dispositivo ethernet dentro da instância | `string` | `"ens3"` | no |
-| <a name="input_server_hostname"></a> [server\_hostname](#input\_server\_hostname) | Define a lista de Nomes de cada instância a ser criada. | `list(string)` | <pre>[<br>  "srv01",<br>  "srv02"<br>]</pre> | no |
-| <a name="input_server_ips"></a> [server\_ips](#input\_server\_ips) | Define a lista de IPs de cada máquina sendo criada. | `list(any)` | <pre>[<br>  "192.168.0.180",<br>  "192.168.0.190"<br>]</pre> | no |
-| <a name="input_server_memory"></a> [server\_memory](#input\_server\_memory) | Define a quantidade de memória de cada instância. | `string` | `"1024"` | no |
-| <a name="input_server_vcpu"></a> [server\_vcpu](#input\_server\_vcpu) | Define a quantidade de vCPUs de cada instância. | `number` | `1` | no |
 | <a name="input_ssh_pub_key"></a> [ssh\_pub\_key](#input\_ssh\_pub\_key) | Define a chave pública SSH a ser usada para acesso nas instâncias virtuais | `string` | n/a | yes |
 | <a name="input_user_name"></a> [user\_name](#input\_user\_name) | Define o nome do usuário padrão a ser criado nas instâncias | `string` | `"devuser"` | no |
 | <a name="input_user_password"></a> [user\_password](#input\_user\_password) | Define a senha do usuário padrão a ser criado nas instâncias | `string` | `"devuser"` | no |
@@ -60,7 +57,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_ip"></a> [ip](#output\_ip) | Exibe o(s) endereço(s) IP(s) atribuído(s) à(s) instância(s) |
+| <a name="output_hostnames_and_ips"></a> [hostnames\_and\_ips](#output\_hostnames\_and\_ips) | teste |
 | <a name="output_password"></a> [password](#output\_password) | Exibe a senha do usuário criado para acessar as instâncias |
 | <a name="output_user"></a> [user](#output\_user) | Exibe o usuário criado para acesso às instâncias |
 <!-- END_TF_DOCS -->

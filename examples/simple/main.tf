@@ -54,10 +54,6 @@
     # define a senha do usuário padrão
     user_password => "devuser"
 
-
-    network - 192.168.0.0/24
-    servidores - srv01 (192.168.0.180), srv02 (192.168.0.190)
-
 */
 
 /*

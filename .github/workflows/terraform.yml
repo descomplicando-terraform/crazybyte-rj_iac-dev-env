@@ -2,11 +2,13 @@ name: Validacao do codigo terraform
 run-name: ${{ github.actor }} iniciou a validação do código terraform
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+    paths:
+      - '**.tf'
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
+    paths:
+      - '**.tf'
 
 jobs:
   terraform:

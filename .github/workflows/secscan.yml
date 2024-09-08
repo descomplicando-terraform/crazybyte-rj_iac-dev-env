@@ -4,8 +4,12 @@ run-name: ${{ github.actor }} Iniciou a Verificação de segurança com TFSEC
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - '**.tf'
   pull_request:
     branches: [ "main" ]
+    paths:
+      - '**.tf'
 
 jobs:
   tfsec:

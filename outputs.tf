@@ -9,7 +9,7 @@ output "hostname" {
 } */
 
 output "hostnames_and_ips" {
-  description = "teste"
+  description = "Exibe os hostnames e IPs atribuídos as instâncias"
   value = [for i, v in libvirt_domain.servidores[*].name : {
     servidor = "${libvirt_domain.servidores[i].name} - ${libvirt_domain.servidores[i].network_interface[0].addresses[0]}"
   }]

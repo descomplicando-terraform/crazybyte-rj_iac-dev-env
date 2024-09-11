@@ -57,7 +57,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_hostnames_and_ips"></a> [hostnames\_and\_ips](#output\_hostnames\_and\_ips) | teste |
+| <a name="output_hostnames_and_ips"></a> [hostnames\_and\_ips](#output\_hostnames\_and\_ips) | Exibe os hostnames e IPs atribuídos as instâncias |
 | <a name="output_password"></a> [password](#output\_password) | Exibe a senha do usuário criado para acessar as instâncias |
 | <a name="output_user"></a> [user](#output\_user) | Exibe o usuário criado para acesso às instâncias |
 <!-- END_TF_DOCS -->

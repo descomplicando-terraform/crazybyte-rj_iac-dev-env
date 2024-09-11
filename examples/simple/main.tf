@@ -57,7 +57,7 @@ data "local_file" "pubkey" {
 }
 
 module "ambiente_01" {
-  source = "github.com/descomplicando-terraform/crazybyte-rj_iac-dev-env?ref=feature-newversion"
+  source = "github.com/descomplicando-terraform/crazybyte-rj_iac-dev-env?ref=main"
   # definido como true para poder criar a infra
   criar_infra = true
 
